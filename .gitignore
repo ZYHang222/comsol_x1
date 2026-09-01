@@ -1,0 +1,14 @@
+# COMSOL lock files
+*.mph.lock
+
+# MATLAB automatic backup files
+*.asv
+
+# MATLAB transient binaries
+*.mexw64
+*.mexa64
+
+# Editor and operating-system metadata
+.DS_Store
+Thumbs.db
+.vscode/

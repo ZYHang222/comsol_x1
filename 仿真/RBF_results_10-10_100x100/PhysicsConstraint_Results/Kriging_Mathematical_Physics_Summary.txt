@@ -1,0 +1,41 @@
+Kriging + First-order Tikhonov + Physics Constraint 摘要
+Kriging 先验：D:\YAN\大论文\x1\仿真\RBF_results_10-10_100x100\Kriging_重建数据.txt
+原始采样：D:\YAN\大论文\x1\数据\10-10.txt
+Ground Truth：D:\YAN\大论文\x1\数据\1000-1000.txt
+统一优化与评价网格：100×100
+已将原始 Ground Truth 从 1000×1000 线性重采样至重建网格 100×100；Kriging、数学正则化和 Physics 重建结果未进行重采样。
+
+标准一阶 Tikhonov 目标：L = (1/2)||B-B_kriging||_F^2 + (100/2)||S(B)-B_sample||_F^2 + (0.001/2)||grad(B)||_F^2
+物理约束目标：在标准一阶 Tikhonov 基础上增加 (0.0005/2)||dBy/dx-dBx/dy||_F^2
+物理限制：单一 z 平面不能直接计算 Bzz=dBz/dz，因此不采用 Bzz=0 假设。物理项仅使用可观测的 curl_z=dBy/dx-dBx/dy，并假定测量平面无自由电流。
+
+原始采样点一致性（高分辨率结果线性回采样至原始采样坐标）：
+  Kriging / Bx: RMSE=4.35904979771e-13 T；MAE=1.95965983444e-13 T；MaxError=1.99999738992e-12 T
+  Kriging / By: RMSE=5.08036024734e-13 T；MAE=2.45353664033e-13 T；MaxError=2.69999994584e-12 T
+  Kriging / Bz: RMSE=6.08871839782e-13 T；MAE=2.96275038465e-13 T；MaxError=3.20000276277e-12 T
+  Kriging / |B|: RMSE=8.74755131004e-13 T；MAE=4.69446053211e-13 T；MaxError=3.50931089743e-12 T
+  First-order Tikhonov / Bx: RMSE=0.000256691149338 T；MAE=0.000112762163046 T；MaxError=0.000970721973342 T
+  First-order Tikhonov / By: RMSE=0.000273134236869 T；MAE=0.000123499096633 T；MaxError=0.00146194270302 T
+  First-order Tikhonov / Bz: RMSE=0.000321065059081 T；MAE=0.000151817476375 T；MaxError=0.00160253696553 T
+  First-order Tikhonov / |B|: RMSE=0.000434854415131 T；MAE=0.00019340924652 T；MaxError=0.00187912180183 T
+  Physics constrained / Bx: RMSE=0.000296450363458 T；MAE=0.000130510540335 T；MaxError=0.00117623213766 T
+  Physics constrained / By: RMSE=0.000314956664215 T；MAE=0.00013893342822 T；MaxError=0.00169790969894 T
+  Physics constrained / Bz: RMSE=0.000321065058741 T；MAE=0.000151817475821 T；MaxError=0.00160253695455 T
+  Physics constrained / |B|: RMSE=0.000471742219804 T；MAE=0.000209605853674 T；MaxError=0.00197193897298 T
+
+原始采样点上相邻方法的 |B| 改变量：
+  First-order Tikhonov - Kriging: RMS=0.000434854414281 T；MaxAbs=0.00187912179832 T
+  Physics - First-order Tikhonov: RMS=4.68477947197e-05 T；MaxAbs=0.000260217034914 T
+
+Kriging
+  RMSE(|B|)=0.00294538615264 T；MAE(|B|)=0.00119928491207 T；MaxError(|B|)=0.0206296380301 T
+  PeakValueError=0.00366206273416 T；PeakPositionError=72.1110255093 mm
+  MeanAbsCurlZ=7.45972489826e-05 T/mm；MaxAbsCurlZ=0.000759833673675 T/mm
+First-order Tikhonov
+  RMSE(|B|)=0.00358848269665 T；MAE(|B|)=0.00142370324051 T；MaxError(|B|)=0.0225956289742 T
+  PeakValueError=0.00744255425468 T；PeakPositionError=68.4689710745 mm
+  MeanAbsCurlZ=5.37545490716e-05 T/mm；MaxAbsCurlZ=0.00212421224702 T/mm
+Physics constrained
+  RMSE(|B|)=0.00356416538554 T；MAE(|B|)=0.00140763233947 T；MaxError(|B|)=0.0225578295684 T
+  PeakValueError=0.00744910138824 T；PeakPositionError=68.4689710745 mm
+  MeanAbsCurlZ=4.49498564323e-05 T/mm；MaxAbsCurlZ=0.00173761681356 T/mm

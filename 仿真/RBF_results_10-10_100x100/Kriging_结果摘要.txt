@@ -1,0 +1,8 @@
+Separable Global Ordinary Kriging 三分量超分辨率重建摘要
+输入文件：D:\YAN\大论文\x1\数据\10-10.txt
+训练网格：10×10；重建网格：100×100
+实现：separable-global-ordinary；协方差：gaussian；nugget：1e-10；sill：1；rangeMultiplier：0.75；range：16.5 mm
+
+当前输入不含真实高分辨率 Ground Truth，以下是 RBF 与 Kriging 特征比较，不是误差评价。
+|B|: RBF 峰值=0.0468427879539，位置=(63, 3) mm；Kriging 峰值=0.0409888027927，位置=(59, 7) mm
+Ct_2D: RBF 峰值=9.99712847258e-06，位置=(-7, -1) mm；Kriging 峰值=9.48078725686e-06，位置=(-5, 1) mm

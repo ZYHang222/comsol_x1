@@ -1,0 +1,5 @@
+Method,PeakValue_T,PeakX_mm,PeakY_mm
+Ground Truth,0.0446508655269079,-13,3
+RBF,0.0468427879538654,63,3
+Global Ordinary Kriging,0.0409888027927055,59,7
+Smoothing TPS,0.0346905448830703,61,5

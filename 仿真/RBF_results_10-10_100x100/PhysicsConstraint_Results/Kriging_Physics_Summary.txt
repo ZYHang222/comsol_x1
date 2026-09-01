@@ -1,0 +1,17 @@
+Kriging + Physics Constraint 高分辨率重建摘要
+Kriging 先验：D:\YAN\大论文\x1\仿真\RBF_results_10-10_100x100\Kriging_重建数据.txt
+Ground Truth：D:\YAN\大论文\x1\数据\1000-1000.txt
+物理优化网格：100×100
+已将原始 Ground Truth 从 1000×1000 线性重采样至重建网格 100×100；Kriging 和 Physics 重建结果未进行重采样。
+
+联合损失权重：Data=1，TV=0.012，Trace=0.035，CT=0.02
+物理限制：单一 z 平面无法直接计算 Bzz=dBz/dz；当前零迹指标为 dBx/dx+dBy/dy，默认 Bzz 假设为 0 T/mm。
+
+Kriging
+  RMSE(|B|)=0.00329290080779 T；MAE(|B|)=0.00162202627149 T；MaxError(|B|)=0.018497855871 T
+  PeakValueError=0.00605893916248 T；PeakPositionError=10.7703296143 mm
+  MeanAbsPlanarTrace=0.000350700731799 T/mm；MaxAbsPlanarTrace=0.00419304579598 T/mm
+Physics constrained
+  RMSE(|B|)=0.003284879967 T；MAE(|B|)=0.00161729030771 T；MaxError(|B|)=0.018498672792 T
+  PeakValueError=0.0060541829134 T；PeakPositionError=10.7703296143 mm
+  MeanAbsPlanarTrace=0.000330502317372 T/mm；MaxAbsPlanarTrace=0.00419383283139 T/mm
